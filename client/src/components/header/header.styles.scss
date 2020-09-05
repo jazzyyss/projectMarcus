@@ -1,0 +1,29 @@
+.header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #ccc;
+    padding: .5rem 0;
+    .headerLogoContainer{
+        font-size: 2rem;
+        font-weight: 800;
+        text-shadow: 1px 1px 1px red;
+        font-family: 'Courier New', Courier, monospace;
+        .logo{
+            margin: auto;
+            margin-left:2rem;
+        }
+    }
+    .headerSideBar{
+        align-self: center;
+        text-align: right;
+        font-size: 1rem;
+        font-weight: 400;
+        .option{
+            margin-right: 2rem;
+            display: inline;
+        }
+        .logoutContainer{
+            cursor: pointer;
+        }
+    }
+}

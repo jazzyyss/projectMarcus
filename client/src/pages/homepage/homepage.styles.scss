@@ -1,0 +1,11 @@
+.blogpageHead{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: .3rem 0;
+    background-color: #ddd;
+    font-weight: 600;
+    .titleHead{
+        font-size: 1.7rem;
+        margin-left: 2rem;
+    }
+}

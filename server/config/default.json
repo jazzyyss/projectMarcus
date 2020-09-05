@@ -1,0 +1,6 @@
+{
+    "dd_privateKey": "brar36",
+    "db_password": "db_password",
+    "DB_URL": "mongodb://localhost:27017/projectmarcus",
+    "requiresAuth": true
+}

@@ -1,0 +1,40 @@
+.createblog{
+    margin: 2rem;
+    background-color: #ddd;
+    padding:1rem;
+    box-sizing: border-box;
+    .blogform{
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        .leftside{
+            textarea{
+                grid-row: 1/span 2;
+                padding:.5rem;
+                margin:1rem 2rem;
+                background-color:black;
+                opacity:.7;
+                border:none;
+                color:#fff;
+                line-height: 1.5rem;
+                resize: none;
+                width: 85%;
+                height: 85%;
+                font-size: 1.2rem;
+                height:25rem;
+            }
+        }
+        .rightside{
+            padding: 0 1rem;
+            .blogImages{
+                .image{
+                    margin-bottom:1rem;
+                }
+                .blogImagesHead{
+                    margin-bottom:1rem;
+                    font-weight:600;
+                }
+            }
+        }
+
+    }
+}

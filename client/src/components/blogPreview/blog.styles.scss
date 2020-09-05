@@ -1,0 +1,28 @@
+.blog{
+    margin:1rem;
+    background-image: linear-gradient(to bottom, #ddd 70%,#666 );
+    max-height: 20rem;
+    min-height: 10rem;
+    box-sizing: border-box;
+    padding:.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    .blogTitle{
+        height:2rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        line-height: 2rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    .blogBody{
+        max-height:15rem;
+        overflow: hidden;
+    }
+    .blogFoot{
+        font-size: 1.5rem;
+        text-align: center;
+        padding:0 0 0 0 ;
+    }
+}
