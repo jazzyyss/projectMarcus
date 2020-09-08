@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Blog } = require('../models/blog');
+const { Blog, validateBlog } = require('../models/blog');
 const upload = require('../middlewares/imageupload');
 const mongoose = require('mongoose')
 
@@ -10,17 +10,15 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/createblog', upload.any('blogImage'), async (req, res) => {
+
     const userid = 'userid2';
     const title = req.body.title;
     const blog = req.body.blog;
     const blogImages = req.files;
     const idForBlog = mongoose.Types.ObjectId();
-    console.log(idForBlog)
-    //blogImages.forEach(img => console.log(img.path))
-    /* console.log(blogImages.length);
-    console.log("Request data---", title, blog);
-    console.log("Request file ---", blogImages[0]); *///Here you get files.
-    //console.log(req.headers);
+    //validating using joi the length of title and blog
+    const { error } = validate(req.body.blogContent);
+    if (error) return res.header(400).send(error.details[0].message);
 
     //checking if the user already has blogs
     const userHasBlogs = await Blog.findOne({ userid });
@@ -55,6 +53,26 @@ router.post('/createblog', upload.any('blogImage'), async (req, res) => {
             res.json({ 'ERROR MESSAGE: ': error.message })
         }
     }
-})
+});
+
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    const validId = mongoose.Types.ObjectId.isValid(id);
+    if (!validId) return res.json('invalid id provided');
+    const blog = await Blog.find();
+    const usersBlogged = blog.map(blog => blog.blogs);
+    let blogToShow;
+    let idOfBlogger;
+    for (var i = 0; i < usersBlogged.length; i++) {
+        usersBlogged[i].map(blog => {
+            if (blog._id == id) {
+                blogToShow = blog
+                idOfBlogger = i;
+            };
+        })
+    }
+    idOfBlogger = blog[idOfBlogger]._id;
+    res.send({ blog: blogToShow, bloggerId: idOfBlogger });
+});
 
 module.exports = router;

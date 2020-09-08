@@ -1,5 +1,4 @@
 import blogActiontypes from './blog.types';
-import { API_ENDPOINT } from '../../config.json';
 import postService from '../../services/blogservice';
 
 export const fetchBlogsStart = _ => ({

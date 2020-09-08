@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const joi = require('joi');
 
 const blogSchema = new mongoose.Schema({
     userid: String,
@@ -36,5 +37,12 @@ const blogSchema = new mongoose.Schema({
 });
 
 const Blog = mongoose.model('Blog', blogSchema);
-
+const validateBlog = (data) => {
+    const schema = {
+        title: joi.string().min(10).max(200).required(),
+        blog: joi.string().min(50).required()
+    };
+    return joi.validate(data, schema);
+}
 exports.Blog = Blog;
+exports.validateBlog = validateBlog;

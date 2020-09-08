@@ -1,19 +1,25 @@
-.blog-heading{
-    font-size: 1.4rem;
-}
-
-.creds{
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.7rem;
-    width: 100%;
-    font-weight: 500;
-}
-.blog-content{
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    @media screen and (max-width:768px) {
-        overflow:wrap;
-        overflow-wrap: anywhere;
+.blogpage{
+    padding:1rem;
+    text-align:justify;
+    margin-bottom:2rem;
+    .blog-heading{
+        font-size: 1.4rem;
+    }
+    
+    .creds{
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.7rem;
+        width: 100%;
+        font-weight: 500;
+        margin-bottom: .5rem;
+    }
+    .blog-content{
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        @media screen and (max-width:768px) {
+            overflow:wrap;
+            overflow-wrap: anywhere;
+        }
     }
 }

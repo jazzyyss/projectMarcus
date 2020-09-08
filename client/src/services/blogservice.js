@@ -12,7 +12,12 @@ const getAllBlogs = async _ => {
     const res = await http.get(API_ENDPOINT + '/blog');
     return res;
 }
+const getBlogWithId = async id => {
+    const res = await http.get(`${API_ENDPOINT}/blog/${id}`);
+    return res;
+}
 export default {
     createPost,
-    getAllBlogs
+    getAllBlogs,
+    getBlogWithId
 }
