@@ -14,6 +14,7 @@ const blogSchema = new mongoose.Schema({
         },
         comments: [new mongoose.Schema({
             comment: String,
+            commentor: String,
             date: {
                 type: Date,
                 required: true,
@@ -38,11 +39,11 @@ const blogSchema = new mongoose.Schema({
 
 const Blog = mongoose.model('Blog', blogSchema);
 const validateBlog = (data) => {
-    const schema = {
+    const schema = joi.object({
         title: joi.string().min(10).max(200).required(),
         blog: joi.string().min(50).required()
-    };
-    return joi.validate(data, schema);
+    });
+    return schema.validate(data);
 }
 exports.Blog = Blog;
 exports.validateBlog = validateBlog;

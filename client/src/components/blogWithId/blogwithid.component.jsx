@@ -2,6 +2,7 @@ import React from 'react';
 import './blogwithid.styles.scss';
 
 const BlogWithId = ({ blog, blogger }) => {
+
     const convertToLocalTimeZone = (time) => {
         let h = parseInt(time.substring(0, 2));
         let m = parseInt(time.substring(3, 5));

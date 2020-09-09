@@ -1,6 +1,17 @@
 .blogpage{
     .blog-comment-section{
         box-sizing: border-box;
+        position:relative;
+        textarea{
+            font-family: 'Raleway', sans-serif;;
+            padding:.5rem;
+            opacity:.7;
+            line-height: 1.3rem;
+            resize: none;
+            width: 85%;
+            height: 6rem;
+            font-size: 1rem;
+        }
         .comments{
             h5{
                 margin-bottom:0;

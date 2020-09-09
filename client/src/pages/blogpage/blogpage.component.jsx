@@ -6,6 +6,7 @@ import blogservice from '../../services/blogservice';
 import withSpinner from '../../components/with-spinner/with-spinner.component';
 
 const BlogWithIdAndSpinner = withSpinner(BlogWithId);
+const CommentSectionWithSpinner = withSpinner(CommentSection);
 
 class BlogPage extends Component {
     state = {
@@ -16,8 +17,6 @@ class BlogPage extends Component {
         bloggerId: null
     }
     async componentDidMount() {
-        /* const { fetchCommentsAsync } = this.props;
-        fetchCommentsAsync(this.state.blogId); */
         const { data } = await blogservice.getBlogWithId(this.state.blogId);
         if (!data) {
             return window.location = '/not-found'
@@ -29,7 +28,7 @@ class BlogPage extends Component {
         return (
             <div className="blogpage">
                 <BlogWithIdAndSpinner isLoading={this.state.isLoading} blogger={this.state.bloggerId} blog={this.state.blog} />
-                <CommentSection />
+                <CommentSectionWithSpinner isLoading={this.state.isLoading} blogger={this.state.bloggerId} blog={this.state.blog} />
             </div>
         );
     }

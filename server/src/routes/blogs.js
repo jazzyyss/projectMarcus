@@ -17,7 +17,7 @@ router.post('/createblog', upload.any('blogImage'), async (req, res) => {
     const blogImages = req.files;
     const idForBlog = mongoose.Types.ObjectId();
     //validating using joi the length of title and blog
-    const { error } = validate(req.body.blogContent);
+    const { error } = validateBlog(req.body.blogContent);
     if (error) return res.header(400).send(error.details[0].message);
 
     //checking if the user already has blogs
@@ -71,8 +71,19 @@ router.get('/:id', async (req, res) => {
             };
         })
     }
-    idOfBlogger = blog[idOfBlogger]._id;
+    idOfBlogger = blog[idOfBlogger].userid;
     res.send({ blog: blogToShow, bloggerId: idOfBlogger });
 });
+router.post('/comments', async (req, res) => {
+    const { blogId, blogger, commentor, comment } = req.body;
+    const blogs = await Blog.findOne({ userid: blogger });
 
+    blogs.blogs.map(blog => {
+        if ((blog._id).toString() == blogId) {
+            blog.comments.push({ comment, commentor });
+        }
+    })
+    await blogs.save();
+    res.send('comment recieved')
+})
 module.exports = router;

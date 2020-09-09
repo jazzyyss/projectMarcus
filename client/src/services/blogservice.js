@@ -16,8 +16,15 @@ const getBlogWithId = async id => {
     const res = await http.get(`${API_ENDPOINT}/blog/${id}`);
     return res;
 }
+const postComment = async data => {
+    console.log(data);
+    const res = await http.post(`${API_ENDPOINT}/blog/comments`, data);
+    return res;
+}
+
 export default {
     createPost,
     getAllBlogs,
-    getBlogWithId
+    getBlogWithId,
+    postComment
 }

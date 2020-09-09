@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './blogcomments.styles.scss';
 import FormButton from '../formButton/formbutton.component';
+import blogService from '../../services/blogservice';
+import { toast } from 'react-toastify';
 
-const CommentSection = _ => {
+const CommentSection = ({ blog, blogger }) => {
     const [commentState, setCommentState] = useState({ comment: '' });
     const { comment } = commentState;
+
     const handleChange = e => {
         const { value, name } = e.target;
         setCommentState({
@@ -12,19 +15,21 @@ const CommentSection = _ => {
             [name]: value
         });
     }
+
     const handleSubmit = async e => {
         e.preventDefault();
-        /* const { name, email } = auth.getCurrentUser();
+        //const { name, email } = auth.getCurrentUser();
+        const commentor = 'currentUser';
+        const blogId = blog._id;
         try {
-            const res = await http.post(apiUrl + 'comments', { blogId, name, email, comment })
-            if (res.status === 200) toast.info('Comment added');
-            if (res.status && res.status !== 200) toast.error('Something went wrong')
+            const res = await blogService.postComment({ blogId, blogger, commentor, comment })
         } catch (err) {
             return err ? toast.error('Something went wrong') : null;
         }
-        setCommentState({ comment: '' }) */
-        console.log('commentSubmitted');
+        setCommentState({ comment: '' })
+        window.location.reload()
     }
+
     return (
         <div className="blog-comment-section">
             <h3>Comments</h3>
@@ -34,18 +39,18 @@ const CommentSection = _ => {
             </form>
             <div className="comments">
                 {
-                    /* !comments ? null :
-                        comments.comments.map(comment => ( */
-                    <div key={comment._id} className="comment-container">
-                        <h5>{comment.name}</h5>
-                        <p className="comment">
-                            {comment.comment}
-                        </p>
-                    </div>
-                    /*  )) */
+                    !blog.comments ? null :
+                        blog.comments.map(c => (
+                            <div key={c._id} className="comment-container">
+                                <h5>{c.commentor}</h5>
+                                <p className="comment">
+                                    {c.comment}
+                                </p>
+                            </div>
+                        ))
                 }
             </div>
-        </div>
+        </div >
     );
 }
 
