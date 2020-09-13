@@ -1,5 +1,4 @@
-.blogpage{
-    .button-container{
+.button-container{
         font-family: 'Metal Mania',cursive;
         .button{
             border:none;
@@ -16,7 +15,7 @@
     }
     .comment-button{
         position:absolute;
-        top:50%;
+        top:6rem;
         right:6%;
         transform:translate(+50%,-50%);
         .button{
@@ -36,4 +35,3 @@
             transform: translateX(-50%);
         }
     }
-}

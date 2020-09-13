@@ -12,6 +12,8 @@ import Header from './components/header/header.component';
 import Homepage from './pages/homepage/homepage.component'
 import BlogPage from './pages/blogpage/blogpage.component';
 import CreateBlog from './pages/createblog/createblog.component';
+import SignupPage from './pages/signup/signup.component';
+import LoginPage from './pages/login/login.component';
 
 function App({ addUser, name }) {
   //reloading page whenever the name changes
@@ -29,6 +31,8 @@ function App({ addUser, name }) {
     <Switch>
       <Route exact path='/blog' exect component={CreateBlog} />
       <Route exact path='/blog/:blogId' component={BlogPage} />
+      <Route exect path='/signup' component={SignupPage} />
+      <Route exect path='/login' component={LoginPage} />
       <Route exact path='/' exect component={Homepage} />
       <Redirect to='/' />
     </Switch>

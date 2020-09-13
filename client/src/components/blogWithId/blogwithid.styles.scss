@@ -22,4 +22,22 @@
             overflow-wrap: anywhere;
         }
     }
+    .blog-images{
+        max-width:70%;
+        height: auto;
+        margin:auto;
+        margin-top:2rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        img{
+            max-width: 100%;
+            height: auto;
+            padding:.3rem;
+            opacity: 0.9;
+            &:hover{
+                box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+                opacity: 1;
+            }
+        }
+    }
 }

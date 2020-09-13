@@ -4,6 +4,7 @@ import './createblog.styles.scss';
 import FormButton from '../../components/formButton/formbutton.component';
 import Input from '../../components/input/input.component';
 import postService from '../../services/blogservice';
+import { toast } from 'react-toastify';
 
 const CreateBlog = () => {
     const [blogContent, setBlogContent] = useState({ title: '', blog: '' });
@@ -27,7 +28,12 @@ const CreateBlog = () => {
         formData.append('blogImage', blogImages.blogImageFour);
         formData.append('blogImage', blogImages.blogImageFive);
         const res = await postService.createPost(formData);
-        console.log(res.data);
+        if (res.status === 200) {
+            alert('You have blogged!');
+            window.location = '/';
+        } else {
+            toast.error('something went wrong');
+        }
     }
     const handleImages = e => {
         const { name } = e.target;

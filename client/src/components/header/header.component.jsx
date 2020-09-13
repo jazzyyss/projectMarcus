@@ -14,7 +14,7 @@ const Header = _ => {
                 <Link to='/blog' className="option blogButton">BLOG</Link>
                 <Link to='/login' className="option loginContainer">Log in</Link>
                 <Link to='/signup' className="option signupContainer">Sign up</Link>
-                <div className="option logoutContainer">Logout</div>
+                <div className="option logoutContainer" onClick={() => { alert('button to log you out') }}>Logout</div>
             </div>
         </div>
     );

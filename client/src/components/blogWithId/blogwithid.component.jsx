@@ -1,5 +1,6 @@
 import React from 'react';
 import './blogwithid.styles.scss';
+import { API_PORT } from '../../config.json';
 
 const BlogWithId = ({ blog, blogger }) => {
 
@@ -30,6 +31,13 @@ const BlogWithId = ({ blog, blogger }) => {
                 &nbsp;&nbsp;at: {convertToLocalTimeZone(blog.date.substring(11, 16))}
             </div>
             <div className="blog-content">{blog.blog}</div>
+            <div className="blog-images">
+                {blog.images.map(image =>
+                    <div className="image" key={image._id}>
+                        <img src={API_PORT + image.imagePath.replace(/\\/g, "/")} alt="" />
+                    </div>
+                )}
+            </div>
 
         </>
     );

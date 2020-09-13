@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './blogcomments.styles.scss';
 import FormButton from '../formButton/formbutton.component';
 import blogService from '../../services/blogservice';
@@ -23,6 +23,7 @@ const CommentSection = ({ blog, blogger }) => {
         const blogId = blog._id;
         try {
             const res = await blogService.postComment({ blogId, blogger, commentor, comment })
+            console.log(res)
         } catch (err) {
             return err ? toast.error('Something went wrong') : null;
         }
